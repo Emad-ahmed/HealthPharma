@@ -1,0 +1,74 @@
+/* font-family: 'Odibee Sans', cursive;
+font-family: 'Roboto', sans-serif;
+font-family: 'Sigmar One', cursive;
+font-family: 'Stint Ultra Condensed', cursive; */
+
+nav
+{
+    background-color: #ffffff;
+    box-shadow: 1px 1px 1px 1px;
+  
+}
+
+.navbar-brand {
+    font-family: 'Odibee Sans', cursive;
+    font-size: 1.5rem;
+    
+}
+
+nav ul li a {
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
+.dropbtn {
+
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: 5.5px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f2f6;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+    text-decoration: none;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropbtn {
+    text-decoration: none;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */

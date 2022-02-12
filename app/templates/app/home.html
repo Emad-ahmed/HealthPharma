@@ -1,0 +1,210 @@
+{% extends 'app/base.html' %} </br>
+
+ {% load static %} </br>
+
+ 
+ {% block title %}Home{% endblock title %} </br>
+
+ 
+ {% block banner_slider %}
+<link rel="stylesheet" href="{% static 'app/css/home.css' %}" />
+<!--Banner Slider-->
+<div
+  id="carouselExampleControls"
+  class="carousel slide"
+  data-bs-ride="carousel"
+>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        src="{% static 'app/images/banner/doctor.jpg' %}"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="{% static 'app/images/banner/doctor1.jpg' %}"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="{% static 'app/images/banner/medicine1.jpg' %}"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="{% static 'app/images/banner/emer.jpg' %}"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+  </div>
+  <a
+    class="carousel-control-prev"
+    href="#carouselExampleControls"
+    role="button"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a
+    class="carousel-control-next"
+    href="#carouselExampleControls"
+    role="button"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
+<!-- End Banner Slider -->
+{% endblock banner_slider %} {% block livesale %}
+<!-- Live Sale Section -->
+<div class="container">
+  <div
+    class="row text-center p-5 text-white border-bottom shadow"
+    style="background: #834553"
+  >
+    <h1>SALE IS LIVE NOW</h1>
+    <span>5% Instant Discount on Axis Bank Credit and Debit Card</span>
+    <small class="fw-lighter"
+      >Term and Condition Applied (For details visit Bank's official
+      Website)</small
+    >
+  </div>
+</div>
+<!-- End Live Sale Section -->
+{% endblock livesale %} {% block main-content %}
+<!-- 1st Product Slider -->
+<div class="m-3">
+  <h2 class="mb-2 mt-3">Covid 19 Special</h2>
+  <!-- Slider 1 -->
+
+  <div class="owl-carousel" id="slider2">
+    {% for tb in topwears %}
+    <a href="{% url 'product-detail' tb.id %}" class="btn">
+      <div class="item">
+        <img
+          src="{{tb.product_image.url}}"
+          alt=""
+          height="200px"
+          style="object-fit: cover"
+        /><span class="fw-bold">{{tb.title}}</span><br /><span class="fs-5"
+          >Taka. {{tb.discounted_price}}</span
+        >
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+
+
+<!-- End 1st Product Slider -->
+
+<!-- Payment Info Section -->
+<div class="container my-5">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img
+            src="{% static 'app/images/payavail/cc.jpg' %}"
+            alt=""
+            srcset=""
+            class="img-fluid"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img
+            src="{% static 'app/images/payavail/upi.jpg' %}"
+            alt=""
+            srcset=""
+            class="img-fluid"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img
+            src="{% static 'app/images/payavail/nb.jpg' %}"
+            alt=""
+            srcset=""
+            class="img-fluid"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img
+            src="{% static 'app/images/payavail/bj.jpg' %}"
+            alt=""
+            srcset=""
+            class="img-fluid"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Payment Info Section -->
+
+<!-- 2nd Product Slider -->
+<div class="mx-3">
+  <h2 class="mb-2 mt-3">Emadshop Top Wears</h2>
+  <!-- Slider 2 -->
+  <div class="owl-carousel" id="slider2">
+    {% for tb in topwears %}
+    <a href="{% url 'product-detail' tb.id %}" class="btn">
+      <div class="item">
+        <img
+          src="{{tb.product_image.url}}"
+          alt=""
+          height="200px"
+          style="object-fit: cover"
+        /><span class="fw-bold">{{tb.title}}</span><br /><span class="fs-5"
+          >Taka. {{tb.discounted_price}}</span
+        >
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+<!-- End 2nd Product Slider -->
+
+<!-- 3nd Product Slider -->
+<div class="mx-3">
+  <h2 class="mb-2 mt-3">Emadshop Mobiles</h2>
+  <hr />
+  <!-- Slider 3 -->
+  <div class="owl-carousel" id="slider3">
+    {% for m in mobiles %}
+    <a href="{% url 'product-detail' m.id %}" class="btn">
+      <div class="item">
+        <img
+          src="{{m.product_image.url}}"
+          alt=""
+          height="200px"
+          style="object-fit: cover"
+        /><span class="fw-bold">{{m.title}}</span><br /><span class="fs-5"
+          >Taka. {{m.discounted_price}}</span
+        >
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+<!-- End 2nd Product Slider -->
+{% endblock main-content %}
