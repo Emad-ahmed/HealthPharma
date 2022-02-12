@@ -16,15 +16,20 @@ from django.utils.decorators import method_decorator
 
 class ProductView(View):
     def get(self, request):
-        topwears = Product.objects.filter(category='TW')
-        bottomwears = Product.objects.filter(category='BW')[:4]
-        mobiles = Product.objects.filter(category='M')
+        covid = Product.objects.filter(category='C')
+        devices = Product.objects.filter(category='D')[:4]
+        herbal = Product.objects.filter(category='H')
+        babymom = Product.objects.filter(category='BM')
+        nudrinks = Product.objects.filter(category='ND')
+        Persoal = Product.objects.filter(category='PC')
+        otc = Product.objects.filter(category='OM')
+        pm = Product.objects.filter(category='PM')
 
         if request.user.is_authenticated:
             cart = Cart.objects.filter(user=request.user)
-            return render(request, 'app/home.html', {'topwears': topwears, 'bottomwears': bottomwears, 'mobiles': mobiles, 'tcart': cart})
+            return render(request, 'app/home.html', {'covid': covid, 'devices': devices, 'herbal': herbal, 'babymom': babymom, 'nudrinks': nudrinks, 'Persoal': Persoal, 'otc': otc, 'pm': pm, 'tcart': cart})
         else:
-            return render(request, 'app/home.html', {'topwears': topwears, 'bottomwears': bottomwears, 'mobiles': mobiles})
+            return render(request, 'app/home.html', {'covid': covid, 'devices': devices, 'herbal': herbal, 'babymom': babymom, 'nudrinks': nudrinks, 'Persoal': Persoal, 'otc': otc, 'pm': pm, })
 
 
 # def product_detail(request):

@@ -87,7 +87,7 @@
   <!-- Slider 1 -->
 
   <div class="owl-carousel" id="slider2">
-    {% for tb in topwears %}
+    {% for tb in covid %}
     <a href="{% url 'product-detail' tb.id %}" class="btn">
       <div class="item">
         <img
@@ -163,10 +163,10 @@
 
 <!-- 2nd Product Slider -->
 <div class="mx-3">
-  <h2 class="mb-2 mt-3">Emadshop Top Wears</h2>
+  <h2 class="mb-2 mt-3">Herbal and Homeopathy</h2>
   <!-- Slider 2 -->
   <div class="owl-carousel" id="slider2">
-    {% for tb in topwears %}
+    {% for tb in herbal %}
     <a href="{% url 'product-detail' tb.id %}" class="btn">
       <div class="item">
         <img
@@ -186,11 +186,124 @@
 
 <!-- 3nd Product Slider -->
 <div class="mx-3">
-  <h2 class="mb-2 mt-3">Emadshop Mobiles</h2>
+  <h2 class="mb-2 mt-3">Baby & Mom care</h2>
   <hr />
   <!-- Slider 3 -->
   <div class="owl-carousel" id="slider3">
-    {% for m in mobiles %}
+    {% for m in babymom %}
+    <a href="{% url 'product-detail' m.id %}" class="btn">
+      <div class="item">
+        <img
+          src="{{m.product_image.url}}"
+          alt=""
+          height="200px"
+          style="object-fit: cover"
+        /><span class="fw-bold">{{m.title}}</span><br /><span class="fs-5"
+          >Taka. {{m.discounted_price}}</span
+        >
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="mx-3">
+  <h2 class="mb-2 mt-3">Devices</h2>
+  <hr />
+  <!-- Slider 4 -->
+  <div class="owl-carousel" id="slider3">
+    {% for m in devices %}
+    <a href="{% url 'product-detail' m.id %}" class="btn">
+      <div class="item">
+        <img
+          src="{{m.product_image.url}}"
+          alt=""
+          height="200px"
+          style="object-fit: cover"
+        /><span class="">{{m.title}}</span><br /><span class=""
+          >Taka. {{m.discounted_price}}</span
+        >
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+
+<div class="mx-3">
+  <h2 class="mb-2 mt-3">Nutrition and drinks</h2>
+  <hr />
+  <!-- Slider 5 -->
+  <div class="owl-carousel" id="slider3">
+    {% for m in nudrinks %}
+    <a href="{% url 'product-detail' m.id %}" class="btn">
+      <div class="item">
+        <img
+          src="{{m.product_image.url}}"
+          alt=""
+          height="200px"
+          style="object-fit: cover"
+        /><span class="fw-bold">{{m.title}}</span><br /><span class="fs-5"
+          >Taka. {{m.discounted_price}}</span
+        >
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+
+<div class="mx-3">
+  <h2 class="mb-2 mt-3">Personal care</h2>
+  <hr />
+  <!-- Slider 6 -->
+  <div class="owl-carousel" id="slider3">
+    {% for m in Persoal %}
+    <a href="{% url 'product-detail' m.id %}" class="btn">
+      <div class="item">
+        <img
+          src="{{m.product_image.url}}"
+          alt=""
+          height="200px"
+          style="object-fit: cover"
+        /><span class="fw-bold">{{m.title}}</span><br /><span class="fs-5"
+          >Taka. {{m.discounted_price}}</span
+        >
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+
+<div class="mx-3">
+  <h2 class="mb-2 mt-3">OTC Medicines</h2>
+  <hr />
+  <!-- Slider 7 -->
+  <div class="owl-carousel" id="slider3">
+    {% for m in otc %}
+    <a href="{% url 'product-detail' m.id %}" class="btn">
+      <div class="item">
+        <img
+          src="{{m.product_image.url}}"
+          alt=""
+          height="200px"
+          style="object-fit: cover"
+        /><span class="fw-bold">{{m.title}}</span><br /><span class="fs-5"
+          >Taka. {{m.discounted_price}}</span
+        >
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="mx-3">
+  <h2 class="mb-2 mt-3">Prescription Medicines</h2>
+  <hr />
+  <!-- Slider 7 -->
+  <div class="owl-carousel" id="slider3">
+    {% for m in pm %}
     <a href="{% url 'product-detail' m.id %}" class="btn">
       <div class="item">
         <img
