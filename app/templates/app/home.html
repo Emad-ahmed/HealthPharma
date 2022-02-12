@@ -220,8 +220,10 @@
           alt=""
           height="200px"
           style="object-fit: cover"
-        /><span class="">{{m.title}}</span><br /><span class=""
-          >Taka. {{m.discounted_price}}</span
+        /><h6 class="fw-bolder">{{m.title}}</h6>
+        <h6 class="text-decoration-line-through text-warning">Taka. {{m.selling_price}}</h6>
+        <h6 class="mt-3 text-success"
+          >৳{{m.discounted_price}}</h6
         >
       </div>
     </a>
