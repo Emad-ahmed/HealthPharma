@@ -38,7 +38,12 @@
   <body>
     <nav class="navbar navbar-expand-lg mb-2 navbar-dark">
       <div class="container p-3">
-        <a class="navbar-brand text-danger" href="/">EmadShop</a>
+        <a class="navbar-brand text-danger" href="/"
+          ><img
+            style="height: 80px; width: 80px"
+            src="{% static 'app/images/banner/large.png' %}"
+            alt=""
+        /></a>
         <button
           class="navbar-toggler bg-danger"
           type="button"
@@ -64,12 +69,24 @@
 
             <div class="dropdown">
               <a href="" class="dropbtn" href="#" id="electronicsDropdown"
-                >Electronics <i class="fas fa-chevron-circle-down"></i
+                >Categories<i class="fas fa-chevron-circle-down"></i
               ></a>
               <div class="dropdown-content">
-                <a href="{% url 'mobile' %}">Mobile</a>
+                <a href="{% url 'covid' %}">Covid 19 Special</a>
                 <div class="dropdown-divider"></div>
-                <a href="{% url 'laptob' %}">Laptob</a>
+                <a href="{% url 'laptob' %}">Devices</a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'laptob' %}">Herbal and Homeopathy</a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'laptob' %}">Baby & Mom care</a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'laptob' %}">Nutrition and drinks</a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'laptob' %}">Personal care</a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'laptob' %}">OTC Medicines</a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'laptob' %}">Prescription Medicines</a>
               </div>
             </div>
             <div class="dropdown">
@@ -79,7 +96,7 @@
               <div class="dropdown-content">
                 <a href="{% url 'topwear' %}">Top Wear</a>
                 <div class="dropdown-divider"></div>
-                <a href="{% url 'bottomwear' %}">Bottom Wear</a>
+                <a href="{% url 'covid' %}">Bottom Wear</a>
               </div>
             </div>
           </ul>

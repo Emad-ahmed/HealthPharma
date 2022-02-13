@@ -229,21 +229,22 @@ def topwear(request, data=None):
     return render(request, 'app/topwear.html', {'topwear': topwear})
 
 
-def bottomwear(request, data=None):
+def covid(request, data=None):
     if data == None:
-        bottomwear = Product.objects.filter(category='BW')
-    elif data == 'Spiker' or data == 'Anzara' or data == "Infinity":
-        bottomwear = Product.objects.filter(category="BW").filter(brand=data)
+        covid = Product.objects.filter(category='C')
+    elif data == 'Square' or data == 'Anzara' or data == "Infinity":
+        covid = Product.objects.filter(category="C").filter(brand=data)
     elif data == "below":
-        bottomwear = Product.objects.filter(
-            category="BW").filter(discounted_price__lt=1000)
+        covid = Product.objects.filter(
+            category="C").filter(discounted_price__lt=1000)
     elif data == "above":
-        bottomwear = Product.objects.filter(
-            category="BW").filter(discounted_price__gt=900)
+        covid = Product.objects.filter(
+            category="C").filter(discounted_price__gt=900)
+
     if request.user.is_authenticated:
         cart = Cart.objects.filter(user=request.user)
-        return render(request, 'app/bottomwear.html', {'bottomwear': bottomwear, 'tcart': cart})
-    return render(request, 'app/bottomwear.html', {'bottomwear': bottomwear})
+        return render(request, 'app/covid.html', {'covid': covid, 'tcart': cart})
+    return render(request, 'app/covid.html', {'covid': covid})
 
 
 def login(request):
@@ -269,40 +270,48 @@ class CustomerRegistrationView(View):
 
 @login_required
 def checkout(request):
-    user = request.user
-    add = Customer.objects.filter(user=user)
-    cart_items = Cart.objects.filter(user=user)
-    amount = 0.0
-    shiping_amount = 70.0
-    total_amount = 0.0
-    cart_product = [p for p in Cart.objects.all() if p.user ==
-                    request.user]
+    try:
+        user = request.user
+        add = Customer.objects.filter(user=user)
+        cart_items = Cart.objects.filter(user=user)
+        amount = 0.0
+        shiping_amount = 70.0
+        total_amount = 0.0
+        cart_product = [p for p in Cart.objects.all() if p.user ==
+                        request.user]
 
-    if cart_product:
-        for p in cart_product:
-            tempamount = (p.quantity * p.product.discounted_price)
-            amount += tempamount
-        total_amount += amount + shiping_amount
+        if cart_product:
+            for p in cart_product:
+                tempamount = (p.quantity * p.product.discounted_price)
+                amount += tempamount
+            total_amount += amount + shiping_amount
 
-    if request.user.is_authenticated:
-        cart = Cart.objects.filter(user=request.user)
-        return render(request, 'app/checkout.html', {'add': add, 'total_amount': total_amount, 'cart_items': cart_items, 'tcart': cart})
+        if request.user.is_authenticated:
+            cart = Cart.objects.filter(user=request.user)
+            return render(request, 'app/checkout.html', {'add': add, 'total_amount': total_amount, 'cart_items': cart_items, 'tcart': cart})
 
-    return render(request, 'app/checkout.html', {'add': add, 'total_amount': total_amount, 'cart_items': cart_items})
+        return render(request, 'app/checkout.html', {'add': add, 'total_amount': total_amount, 'cart_items': cart_items})
+    except:
+        messages.success(request, "Please Add Your Profile For Place Order")
+        return redirect('profile')
 
 
 @login_required
 def payment_done(request):
-    user = request.user
-    custid = request.GET.get('custid')
-    customer = Customer.objects.get(id=custid)
-    cart = Cart.objects.filter(user=user)
-    for c in cart:
-        OrderPlaced(user=user, customer=customer,
-                    product=c.product, quantity=c.quantity).save()
-        c.delete()
+    try:
+        user = request.user
+        custid = request.GET.get('custid')
+        customer = Customer.objects.get(id=custid)
+        cart = Cart.objects.filter(user=user)
+        for c in cart:
+            OrderPlaced(user=user, customer=customer,
+                        product=c.product, quantity=c.quantity).save()
+            c.delete()
 
-    return redirect('orders')
+        return redirect('orders')
+    except:
+        messages.success(request, "Please Add Your Profile For Place Order")
+        return redirect('profile')
 
 
 @method_decorator(login_required, name='dispatch')
