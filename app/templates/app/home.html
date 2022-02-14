@@ -58,6 +58,35 @@
   </div>
 </div>
 
+<!-- Modal 2-->
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog text-center">
+    <div class="modal-content w-100">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel1">Call Us</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group">
+          <li class="list-group-item mb-4"><a href="tel:+8801312240069" class="text-decoration-none">Click Here To Order +8801312240069</a></li>
+          <li class="list-group-item mb-4"><a href="tel:+8801312241148" class="text-decoration-none">Click Here To Order +8801312241148</a></li>
+          <li class="list-group-item mb-4"><a href="tel:+8801312240069" class="text-decoration-none">Click Here To Order +8801312240069</a></li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
         
 <div
   id="carouselExampleControls"
@@ -148,7 +177,7 @@
     <div class="col-sm-4">
       <div class="card mb-3">
         <div class="card-body">
-          <a href=""><img
+          <a href="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"><img
             src="{% static 'app/images/banner/cto.png' %}"
             alt=""
             srcset=""

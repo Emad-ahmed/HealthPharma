@@ -11,6 +11,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from app.forms import UploadPrescriptionForm
+from app.models import Customer, UploadPrescription
 # def home(request):
 #  return render(request, 'app/home.html')
 
@@ -42,9 +43,11 @@ class ProductView(View):
         otc = Product.objects.filter(category='OM')
         pm = Product.objects.filter(category='PM')
         fm = UploadPrescriptionForm()
-        fm = UploadPrescriptionForm(request.POST, request.FILES)
-        if fm.is_valid():
-            fm.save
+        prescription_image = request.FILES['prescription_image']
+
+        fm = UploadPrescription(
+            newuser=request.user,  prescription_image=prescription_image)
+        fm.save()
         if request.user.is_authenticated:
             cart = Cart.objects.filter(user=request.user)
             return render(request, 'app/home.html', {'covid': covid, 'devices': devices, 'herbal': herbal, 'babymom': babymom, 'nudrinks': nudrinks, 'Persoal': Persoal, 'otc': otc, 'pm': pm, 'tcart': cart, "form": fm})
