@@ -7,6 +7,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.utils.translation import gettext, gettext_lazy as _
 from django.contrib.auth import password_validation
+from app.models import UploadPrescription
 
 
 class CustomerRegistrationForm(UserCreationForm):
@@ -64,4 +65,13 @@ class CustomerProfileForm(forms.ModelForm):
             'city': forms.TextInput(attrs={'class': 'form-control'}),
             'state': forms.Select(attrs={'class': 'form-control'}),
             'zipcode': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
+
+
+class UploadPrescriptionForm(forms.ModelForm):
+    class Meta:
+        model = UploadPrescription
+        fields = ['prescription_image']
+        widgets = {
+            'prescription_image': forms.FileInput(attrs={'class': 'form-control'}),
         }

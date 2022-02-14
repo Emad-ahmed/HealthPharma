@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import(Customer,
                     Product,
                     Cart,
-                    OrderPlaced)
+                    OrderPlaced, UploadPrescription)
 # Register your models here.
 
 
@@ -27,3 +27,8 @@ class CustomerModelAdmin(admin.ModelAdmin):
 class CustomerModelAdmin(admin.ModelAdmin):
     list_display = ['id', 'user', 'customer', 'product',
                     'quantity', 'ordered_date', 'status']
+
+
+@admin.register(UploadPrescription)
+class UploadModelAdmin(admin.ModelAdmin):
+    list_display = ['id', 'prescription_image']

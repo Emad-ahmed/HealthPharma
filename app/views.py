@@ -10,6 +10,7 @@ from django.db.models import Q
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from app.forms import UploadPrescriptionForm
 # def home(request):
 #  return render(request, 'app/home.html')
 
@@ -24,16 +25,35 @@ class ProductView(View):
         Persoal = Product.objects.filter(category='PC')
         otc = Product.objects.filter(category='OM')
         pm = Product.objects.filter(category='PM')
-
+        fm = UploadPrescriptionForm()
         if request.user.is_authenticated:
             cart = Cart.objects.filter(user=request.user)
-            return render(request, 'app/home.html', {'covid': covid, 'devices': devices, 'herbal': herbal, 'babymom': babymom, 'nudrinks': nudrinks, 'Persoal': Persoal, 'otc': otc, 'pm': pm, 'tcart': cart})
+            return render(request, 'app/home.html', {'covid': covid, 'devices': devices, 'herbal': herbal, 'babymom': babymom, 'nudrinks': nudrinks, 'Persoal': Persoal, 'otc': otc, 'pm': pm, 'tcart': cart, "form": fm})
         else:
-            return render(request, 'app/home.html', {'covid': covid, 'devices': devices, 'herbal': herbal, 'babymom': babymom, 'nudrinks': nudrinks, 'Persoal': Persoal, 'otc': otc, 'pm': pm, })
+            return render(request, 'app/home.html', {'covid': covid, 'devices': devices, 'herbal': herbal, 'babymom': babymom, 'nudrinks': nudrinks, 'Persoal': Persoal, 'otc': otc, 'pm': pm, "form": fm})
 
+    def post(self, request):
+        covid = Product.objects.filter(category='C')
+        devices = Product.objects.filter(category='D')[:4]
+        herbal = Product.objects.filter(category='H')
+        babymom = Product.objects.filter(category='BM')
+        nudrinks = Product.objects.filter(category='ND')
+        Persoal = Product.objects.filter(category='PC')
+        otc = Product.objects.filter(category='OM')
+        pm = Product.objects.filter(category='PM')
+        fm = UploadPrescriptionForm()
+        fm = UploadPrescriptionForm(request.POST, request.FILES)
+        if fm.is_valid():
+            fm.save
+        if request.user.is_authenticated:
+            cart = Cart.objects.filter(user=request.user)
+            return render(request, 'app/home.html', {'covid': covid, 'devices': devices, 'herbal': herbal, 'babymom': babymom, 'nudrinks': nudrinks, 'Persoal': Persoal, 'otc': otc, 'pm': pm, 'tcart': cart, "form": fm})
+        else:
+            return render(request, 'app/home.html', {'covid': covid, 'devices': devices, 'herbal': herbal, 'babymom': babymom, 'nudrinks': nudrinks, 'Persoal': Persoal, 'otc': otc, 'pm': pm, "form": fm})
 
 # def product_detail(request):
 #     return render(request, 'app/productdetail.html')
+
 
 class ProductDetailView(View):
     def get(self, request, pk):

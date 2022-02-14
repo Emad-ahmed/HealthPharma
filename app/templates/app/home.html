@@ -8,7 +8,57 @@
  
  {% block banner_slider %}
 <link rel="stylesheet" href="{% static 'app/css/home.css' %}" />
-<!--Banner Slider-->
+<!--Banner Slider--> 
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          <a  class="collapse-link" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <h1 class="mb-2 text-center">Why You Need To Upload Prescription?</h1>
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <p>1)You're free from the fear of losing a prescription, and you'll find your digital prescription in a lifetime cure app.</p>
+            <p>2)No problem if the doctor's handwriting is not understood, our 'A' grade pharmacist will assist you in ordering the medicine by looking at the prescription.</p>
+            <p>3)Your prescription will never be shared with any third party.</p>
+            <p>4)According to the rules of the government of Bangladesh, it is mandatory to have a prescription to order some medicines.</p>          </div>
+        </div>
+        
+        <div>
+          <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="text-center">
+            <label for="first_img"> <img src="{% static 'app/images/icon.jpg' %}"  alt="" style="height:18rem; width:18rem"></label> 
+            </div>
+              <input type="file" name="prescription_image" id="first_img" class="form-control" style="display:none; visibility: none;">
+              
+              <div class="text-center">
+                <button class="btn btn-warning" style="width:30rem;" >Upload</button>
+              </div>
+          </form>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        
 <div
   id="carouselExampleControls"
   class="carousel slide"
@@ -85,37 +135,38 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="card mb-3">
-        <div class="card-body">
-          <img
-            src="{% static 'app/images/banner/pres.png' %}"
-            alt=""
-            srcset=""
-            class="img-fluid"
-          />
+        <div class="card-body"> <a href="" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal"><img
+          src="{% static 'app/images/banner/pres.png' %}"
+          alt=""
+          srcset=""
+          class="img-fluid"
+        /></a>
+          
         </div>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="card mb-3">
         <div class="card-body">
-          <img
+          <a href=""><img
             src="{% static 'app/images/banner/cto.png' %}"
             alt=""
             srcset=""
             class="img-fluid"
-          />
+          /></a>
+          
         </div>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="card mb-3">
         <div class="card-body">
-          <img
+          <a href=""><img
             src="{% static 'app/images/banner/healthcare.png' %}"
             alt=""
             srcset=""
             class="img-fluid"
-          />
+          /></a>
         </div>
       </div>
     </div>

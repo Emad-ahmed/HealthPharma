@@ -41,3 +41,13 @@
     font-family: 'Roboto Condensed', sans-serif;
     color: #0C0404;
 }
+
+.modal-content {
+    position: absolute;
+    margin-left: -320px;
+    width: 70rem;
+}
+
+.collapse-link {
+    text-decoration: none;
+}

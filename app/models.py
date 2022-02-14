@@ -93,3 +93,7 @@ class OrderPlaced(models.Model):
     @property
     def total_cost(self):
         return self.quantity * self.product.discounted_price
+
+
+class UploadPrescription(models.Model):
+    prescription_image = models.ImageField(upload_to='presimg')
