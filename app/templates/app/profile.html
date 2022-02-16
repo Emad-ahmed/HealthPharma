@@ -2,6 +2,24 @@
 {% load static %} <br />
 {% block title %}Profile{%endblock title %} <br />
 {% block main-content %}
+
+<style>
+  body {
+    background: white;
+  }
+  .btnlogin .btn {
+    width: 100%;
+    background: #ff1a1a;
+    font-weight: bold;
+  }
+  .btntext {
+    color: black;
+    text-align: center;
+  }
+  .form-group label {
+    color: black;
+  }
+</style>
 <div class="container">
   <div class="row my-5">
     <div class="col-lg-3 border-end">
@@ -15,7 +33,7 @@
       </ul>
     </div>
     <div class="col-lg-8">
-      <h3 class="text-center">Profile</h3>
+      <h1 class="text-center btntext">Profile</h1>
       {% if messages %} {% for message in messages %}
       <p
         {%
@@ -31,16 +49,16 @@
       </p>
       {% endfor %} {% endif %}
       <hr />
-      <form action="" method="post" novalidate class="shadow p-5">
+      <form action="" method="post" novalidate class="shadow p-5 pt-2">
         {% csrf_token %} {% for fm in form %}
         <div class="form-group mb-3">
           {{fm.label_tag}} {{fm}}
           <small class="text-danger"> {{fm.errors|striptags}} </small>
         </div>
         {% endfor %}
-
-        <input type="submit" value="Submit" class="btn btn-primary" />
-        <br />
+        <div class="btnlogin mt-3">
+          <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
 
         {% if form.non_field_errors %} {% for error in form.non_field_errors %}
         <p class="alert alert-danger my-3">{{error}}</p>

@@ -24,7 +24,7 @@
       <div class="modal-body">
         <p>
           <a  class="collapse-link" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <h1 class="mb-2 text-center">Why You Need To Upload Prescription?</h1>
+            <h1 class="mb-2 text-center">Why You Need To Upload Prescription <i class="fas fa-chevron-circle-down text-danger"> </i></h1>
           </a>
         </p>
         <div class="collapse" id="collapseExample">
@@ -44,7 +44,7 @@
               <input type="file" name="prescription_image" id="first_img" class="form-control" style="display:none; visibility: none;">
               
               <div class="text-center">
-                <button class="btn btn-warning" style="width:30rem;" >Upload</button>
+                <button class="btn uplaodbtn" >Upload</button>
               </div>
           </form>
         </div>
@@ -143,7 +143,9 @@
   </a>
 </div>
 <!-- End Banner Slider -->
-{% endblock banner_slider %} {% block livesale %}
+{% endblock banner_slider %} <br>
+{% block livesale %}
+<!-- Live Sale Section -->
 <!-- Live Sale Section -->
 <div class="container">
   <div
@@ -158,6 +160,11 @@
     >
   </div>
 </div>
+<!-- End Live Sale Section -->
+<div class="container">
+  <marquee behavior="scroll" direction="left" scrollamount="12"><h1 class="display-5 mt-3"><span class="mar">Bangladesh No 1 Online Pharmacy</span></h1> </marquee>
+</div>
+
 <!-- End Live Sale Section -->
 {% endblock livesale %} {% block main-content %}
 <div class="container my-5">
@@ -205,8 +212,8 @@
 <!-- 1st Product Slider -->
 {% if covid %}
 <div class="mx-3">
-  <h2 class="mb-2 mt-3 ml-3 title">Covid 19 Special</h2>
-  <hr />
+  <h1 class="mb-1 mt-3 ml-3 title text-center text-white">Covid 19 Special</h1>
+
   <!-- Slider 1 -->
 
   <div class="owl-carousel" id="slider3">
@@ -220,9 +227,10 @@
           style="object-fit: cover"
         /><h6 class="fw-bolder">{{m.title}}</h6>
         <h6 class="text-decoration-line-through text-warning">৳ {{m.selling_price}}</h6>
-        <h6 class="mt-3 text-success"
+        <h6 class="mt-3 text-danger"
           >৳ {{m.discounted_price}}</h6
         >
+        <button class="btn1">Shop Now</button>
       </div>
     </a>
     {% endfor %}
@@ -236,8 +244,7 @@
 <!-- 2nd Product Slider -->
 {% if herbal %}
 <div class="mx-3">
-  <h2 class="mb-2 mt-3 title">Herbal and Homeopathy</h2>
-  <hr />
+  <h2 class="mb-1 mt-3 title">Herbal and Homeopathy</h2>
   <!-- Slider 2 -->
   <div class="owl-carousel" id="slider3">
     {% for m in herbal %}
@@ -249,10 +256,11 @@
           height="200px"
           style="object-fit: cover"
         /><h6 class="fw-bolder">{{m.title}}</h6>
-        <h6 class="text-decoration-line-through text-danger">৳  {{m.selling_price}}</h6>
-        <h6 class="mt-3 text-success"
+        <h6 class="text-decoration-line-through text-warning">৳  {{m.selling_price}}</h6>
+        <h6 class="mt-3 text-danger"
           >৳ {{m.discounted_price}}</h6
         >
+        <button class="btn1">Shop Now</button>
       </div>
     </a>
     {% endfor %}
@@ -264,8 +272,8 @@
 <!-- 3nd Product Slider -->
 {% if babymom %}
 <div class="mx-3">
-  <h2 class="mb-2 mt-3 title">Baby & Mom care</h2>
-  <hr />
+  <h2 class="mb-1 mt-3 title">Baby & Mom care</h2>
+  
   <!-- Slider 3 -->
   <div class="owl-carousel" id="slider3">
     {% for m in babymom %}
@@ -277,10 +285,11 @@
           height="200px"
           style="object-fit: cover"
         /><h6 class="fw-bolder">{{m.title}}</h6>
-        <h6 class="text-decoration-line-through text-danger">৳  {{m.selling_price}}</h6>
-        <h6 class="mt-3 text-success"
+        <h6 class="text-decoration-line-through text-warning">৳  {{m.selling_price}}</h6>
+        <h6 class="mt-3 text-danger"
           >৳ {{m.discounted_price}}</h6
         >
+        <button class="btn1">Shop Now</button>
       </div>
     </a>
     {% endfor %}
@@ -289,8 +298,8 @@
 {% endif %}
 {% if devices %}
 <div class="mx-3">
-  <h2 class="mb-2 mt-3 title">Devices</h2>
-  <hr />
+  <h2 class="mb-1 mt-3 title">Devices</h2>
+  
   <!-- Slider 4 -->
   <div class="owl-carousel" id="slider3">
     {% for m in devices %}
@@ -302,20 +311,24 @@
           height="200px"
           style="object-fit: cover"
         /><h6 class="fw-bolder">{{m.title}}</h6>
-        <h6 class="text-decoration-line-through text-danger">৳  {{m.selling_price}}</h6>
-        <h6 class="mt-3 text-success"
+        <h6 class="text-decoration-line-through text-warning">৳  {{m.selling_price}}</h6>
+        <h6 class="mt-3 text-danger"
           >৳ {{m.discounted_price}}</h6
         >
+        <button class="btn1">Shop Now</button>
       </div>
+      
     </a>
+    
     {% endfor %}
+    
   </div>
 </div>
 {% endif %}
 {% if nudrinks %}
 <div class="mx-3">
-  <h2 class="mb-2 mt-3 title">Nutrition and drinks</h2>
-  <hr />
+  <h2 class="mb-1 mt-3 title">Nutrition and drinks</h2>
+  
   <!-- Slider 5 -->
   <div class="owl-carousel" id="slider3">
     {% for m in nudrinks %}
@@ -327,10 +340,11 @@
           height="200px"
           style="object-fit: cover"
         /><h6 class="fw-bolder">{{m.title}}</h6>
-        <h6 class="text-decoration-line-through text-danger">৳  {{m.selling_price}}</h6>
-        <h6 class="mt-3 text-success"
+        <h6 class="text-decoration-line-through text-warning">৳  {{m.selling_price}}</h6>
+        <h6 class="mt-3 text-danger"
           >৳ {{m.discounted_price}}</h6
         >
+        <button class="btn1">Shop Now</button>
       </div>
     </a>
     {% endfor %}
@@ -340,8 +354,8 @@
 
 {% if Persoal %}
 <div class="mx-3">
-  <h2 class="mb-2 mt-3 title">Personal care</h2>
-  <hr />
+  <h2 class="mb-1 mt-3 title">Personal care</h2>
+  
   <!-- Slider 6 -->
   <div class="owl-carousel" id="slider3">
     {% for m in Persoal %}
@@ -353,10 +367,11 @@
           height="200px"
           style="object-fit: cover"
         /><h6 class="fw-bolder">{{m.title}}</h6>
-        <h6 class="text-decoration-line-through text-danger">৳  {{m.selling_price}}</h6>
-        <h6 class="mt-3 text-success"
+        <h6 class="text-decoration-line-through text-warning">৳  {{m.selling_price}}</h6>
+        <h6 class="mt-3 text-danger"
           >৳ {{m.discounted_price}}</h6
         >
+        <button class="btn1">Shop Now</button>
       </div>
     </a>
     {% endfor %}
@@ -366,8 +381,8 @@
 
 {% if otc %}
 <div class="mx-3">
-  <h2 class="mb-2 mt-3 title">OTC Medicines</h2>
-  <hr />
+  <h2 class="mb-1 mt-3 title">OTC Medicines</h2>
+ 
   <!-- Slider 7 -->
   <div class="owl-carousel" id="slider3">
     {% for m in otc %}
@@ -380,9 +395,10 @@
           style="object-fit: cover"
         /><h6 class="fw-bolder">{{m.title}}</h6>
         <h6 class="text-decoration-line-through text-warning">৳  {{m.selling_price}}</h6>
-        <h6 class="mt-3 text-success"
+        <h6 class="mt-3 text-danger"
           >৳ {{m.discounted_price}}</h6
         >
+        <button class="btn1">Shop Now</button>
       </div>
     </a>
     {% endfor %}
@@ -392,8 +408,8 @@
 
 {% if pm %}
 <div class="mx-3">
-  <h2 class="mb-2 mt-3 title">Prescription Medicines</h2>
-  <hr />
+  <h2 class="mb-1 mt-3 title">Prescription Medicines</h2>
+  
   <!-- Slider 7 -->
   <div class="owl-carousel" id="slider3">
     {% for m in pm %}
@@ -404,9 +420,10 @@
           alt=""
           height="200px"
           style="object-fit: cover"
-        /><span class="fw-bold">{{m.title}}</span><br /><span class="fs-5"
-          >Taka. {{m.discounted_price}}</span
+        /><span class="fw-bold text-danger">{{m.title}}</span><br /><span class="fs-5"
+          >৳  {{m.discounted_price}}</span
         >
+        <button class="btn1">Shop Now</button>
       </div>
     </a>
     {% endfor %}
