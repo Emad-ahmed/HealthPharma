@@ -1,8 +1,50 @@
-{% extends 'app/base.html' %} {% load static %} {% block title %}Product
-Detail{% endblock title %} {% block main-content %}
+{% extends 'app/base.html' %} <br />
+{% load static %} <br />
+{% block title %}ProductDetail{% endblock title %} <br />
+{% block main-content %}
+
+<style>
+  body {
+    background: background-color: #000000;
+    background-image: linear-gradient(315deg, #000000 0%, #414141 74%);;
+  }
+  .disprice {
+    color: #c42118;
+  }
+  .cattype {
+    color: #7e7455;
+  }
+  .imgproduct img {
+    border-radius: 20px 20px 20px 20px;
+    box-shadow: 2px 2px 2px 2px;
+  }
+
+  .addbtn {
+    color: white;
+    width: 12rem;
+    border: 1px solid white;
+  }
+
+  .addbtn:hover {
+    color: white;
+    background: black;
+  }
+
+  .addbtn1 {
+    color: white;
+    background: #ff0000;
+    width: 12rem;
+    border: 1px solid white;
+  }
+
+  .addbtn1:hover {
+    color: white;
+    background: black;
+  }
+</style>
 <div class="container my-5">
   <div class="row">
-    <div class="col-sm-6 text-center align-self-center">
+    <div class="col-sm-6 text-center align-self-center imgproduct">
       <img
         src="{{product.product_image.url}}"
         alt=""
@@ -12,15 +54,13 @@ Detail{% endblock title %} {% block main-content %}
       />
     </div>
     <div class="col-sm-5 offset-sm-1">
-      <h2>
-        <span class="text-success">Product Title:</span> {{product.title}}
-      </h2>
-      <hr />
+      <h1 class="m-0">{{product.title}}</h1>
+      <p class="cattype">{{product.cattype}}</p>
       <p>{{product.description}}</p>
-      <br />
-      <h4>
-        Taka . {{product.discounted_price}}
-        <small class="fw-light text-decoration-line-through"
+
+      <h4 class="disprice">
+        ৳ {{product.discounted_price}}
+        <small class="fw-light text-decoration-line-through text-white-50"
           >{{product.selling_price}}</small
         >
       </h4>
@@ -40,7 +80,7 @@ Detail{% endblock title %} {% block main-content %}
           value="{{product.id}}"
           id="prod_id"
         />
-        <button type="submit" class="btn btn-primary shadow px-5 py-2">
+        <button type="submit" class="btn addbtn shadow px-5 py-2">
           Add To Cart
         </button>
       </form>
@@ -52,15 +92,13 @@ Detail{% endblock title %} {% block main-content %}
           value="{{product.id}}"
           id="prod_id"
         />
-        <button type="submit" class="btn btn-primary shadow px-5 py-2">
+        <button type="submit" class="btn btn-outline-white shadow px-5 py-2">
           Add To Cart
         </button>
       </form>
       {% endif %}
 
-      <a
-        href="{% url 'checkout' %}"
-        class="btn btn-danger shadow px-5 py-2 ms-4"
+      <a href="{% url 'checkout' %}" class="btn addbtn1 px-5 py-2 ms-4"
         >Buy Now</a
       >
       <h5 class="mt-5">Available Offers</h5>
