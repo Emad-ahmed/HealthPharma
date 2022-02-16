@@ -17,6 +17,10 @@ nav {
     font-size: 1.4rem;
 }
 
+.navbar-brand img {
+    border-radius: 20px 20px;
+}
+
 nav ul li a {
     font-family: 'Roboto', sans-serif;
     color: white;

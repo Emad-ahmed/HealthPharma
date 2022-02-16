@@ -2,6 +2,16 @@
 {% load static %} <br />
 {% block title %}Buy Now{%endblock title %} <br />
 {% block main-content %}
+
+<style>
+  body {
+    background: white;
+  }
+  .container {
+    color: black;
+  }
+</style>
+
 <div class="container" style="height: 100vh">
   <div class="row mt-5">
     <div class="col-sm-6">
@@ -10,7 +20,7 @@
       {% for item in cart_items %}
       <div class="card mb-2">
         <div class="card-body">
-          <h5>Product: {{item.product.title}}</h5>
+          <h5>Product: <span class="fw-bold">{{item.product.title}}</span></h5>
           <p>Quantity: {{item.quantity}}</p>
           <p class="fw-bold">Price : {{item.total_cost}}</p>
         </div>

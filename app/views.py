@@ -63,10 +63,11 @@ class ProductDetailView(View):
         product = Product.objects.get(pk=pk)
         item_already_cart = False
         if request.user.is_authenticated:
+            cart = Cart.objects.filter(user=request.user)
             item_already_cart = Cart.objects.filter(
                 Q(product=product.id) & Q(user=request.user)).exists()
 
-        return render(request, 'app/productdetail.html', {'product': product, 'item_already_cart': item_already_cart})
+        return render(request, 'app/productdetail.html', {'product': product, 'item_already_cart': item_already_cart, 'tcart': cart, 'tcart': cart, })
 
 
 @login_required
@@ -95,13 +96,15 @@ def show_cart(request):
         buy_now = "Buy Now"
         cart_product = [p for p in Cart.objects.all() if p.user == user]
         print(cart_product)
+        if request.user.is_authenticated:
+            cart = Cart.objects.filter(user=request.user)
         if cart_product:
             for p in cart_product:
                 tempamount = (p.quantity * p.product.discounted_price)
                 amount += tempamount
                 total_amount = amount + shiping_amount
         else:
-            return render(request, 'app/addtocart.html', {'carts_empty': empty_cart, 'buy_now': buy_now, 'totalamount': total_amount, 'amount': amount})
+            return render(request, 'app/addtocart.html', {'carts_empty': empty_cart, 'buy_now': buy_now, 'totalamount': total_amount, 'amount': amount, 'tcart': cart, })
 
         return render(request, 'app/addtocart.html', {'carts': cart, 'totalamount': total_amount, 'amount': amount, 'tcart': cart})
 
@@ -187,14 +190,16 @@ def buy_now(request):
 def address(request):
     add = Customer.objects.filter(user=request.user)
 
-    return render(request, 'app/address.html', {'add': add,  'active': 'btn-primary'})
+    return render(request, 'app/address.html', {'add': add,  'active': 'btn-info'})
 
 
 @login_required
 def orders(request):
-    op = OrderPlaced.objects.filter(user=request.user)
 
-    return render(request, 'app/orders.html', {'order_placed': op})
+    op = OrderPlaced.objects.filter(user=request.user)
+    if request.user.is_authenticated:
+        cart = Cart.objects.filter(user=request.user)
+    return render(request, 'app/orders.html', {'order_placed': op, 'tcart': cart, })
 
 
 def mobile(request, data=None):
@@ -343,8 +348,8 @@ class ProfileView(View):
         form = CustomerProfileForm()
         if request.user.is_authenticated:
             cart = Cart.objects.filter(user=request.user)
-            return render(request, 'app/profile.html', {'form': form, 'active': 'btn-primary', 'tcart': cart})
-        return render(request, 'app/profile.html', {'form': form, 'active': 'btn-primary'})
+            return render(request, 'app/profile.html', {'form': form, 'active': 'btn-info', 'tcart': cart})
+        return render(request, 'app/profile.html', {'form': form, 'active': 'btn-info'})
 
     def post(self, request):
         form = CustomerProfileForm(request.POST)
@@ -362,8 +367,8 @@ class ProfileView(View):
                 request, 'Congratulations Profile Updated Successfully')
         if request.user.is_authenticated:
             cart = Cart.objects.filter(user=request.user)
-            return render(request, 'app/profile.html', {'form': form, 'active': 'btn-primary', 'tcart': cart})
-        return render(request, 'app/profile.html', {'form': form, 'active': 'btn-primary'})
+            return render(request, 'app/profile.html', {'form': form, 'active': 'btn-info', 'tcart': cart})
+        return render(request, 'app/profile.html', {'form': form, 'active': 'btn-info'})
 
 
 class PasswordChangeView(View):
