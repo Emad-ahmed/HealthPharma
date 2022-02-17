@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import(Customer,
                     Product,
                     Cart,
-                    OrderPlaced, UploadPrescription)
+                    OrderPlaced, UploadPrescription, DoctorInfo)
 # Register your models here.
 
 
@@ -32,3 +32,8 @@ class CustomerModelAdmin(admin.ModelAdmin):
 @admin.register(UploadPrescription)
 class UploadModelAdmin(admin.ModelAdmin):
     list_display = ['id', 'prescription_image']
+
+
+@admin.register(DoctorInfo)
+class DoctorInfoAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'specialist', 'chamber_address', 'city']

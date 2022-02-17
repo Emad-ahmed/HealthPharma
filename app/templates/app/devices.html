@@ -71,12 +71,12 @@
 </style>
 
 <div class="container-fluid my-5">
-  <h1 class="mb-5">Covid 19 Special</h1>
+  <h1 class="mb-5">Devices</h1>
   <div class="row">
-    {% for product in covid %}
+    {% for product in devices %}
     <div class="col-lg-4">
       <a href="{% url 'product-detail' product.id %}" class="prodbtn">
-        <div class="card" style="width: 25rem">
+        <div class="card mb-5" style="width: 25rem">
           <div class="newhi">
             <p class="mt-4 ms-1">10% Sale</p>
           </div>
@@ -88,7 +88,7 @@
             />
           </div>
           <div class="card-body">
-            <h3 class="card-title">{{product.title}}</h3>
+            <h6 class="card-title fw-bold">{{product.title}}</h6>
 
             <div>
               <p class="card-text">

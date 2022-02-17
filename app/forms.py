@@ -1,5 +1,5 @@
 from django.forms import widgets
-from app.models import Customer
+from app.models import Customer, DoctorInfo
 from typing import Set
 from django.contrib.auth import password_validation
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UsernameField, PasswordChangeForm, PasswordResetForm, SetPasswordForm
@@ -74,4 +74,15 @@ class UploadPrescriptionForm(forms.ModelForm):
         fields = ['prescription_image']
         widgets = {
             'prescription_image': forms.FileInput(attrs={'class': 'form-control'}),
+        }
+
+
+class DoctorInfoForm(forms.ModelForm):
+    class Meta:
+        model = DoctorInfo
+        fields = ['name', 'qualification', 'specialist', 'chamber',
+                  'chamber_address', 'serial_number', 'visiting_hour', 'new_patient_fee', 'old_patient_fee', 'report_checking_fee', 'doctor_img', 'city']
+        labels = {'name': 'Full Name'}
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control'})
         }

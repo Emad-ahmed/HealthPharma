@@ -191,8 +191,11 @@ def buy_now(request):
 @login_required
 def address(request):
     add = Customer.objects.filter(user=request.user)
-
-    return render(request, 'app/address.html', {'add': add,  'active': 'btn-info'})
+    if request.user.is_authenticated:
+        cart = Cart.objects.filter(user=request.user)
+        return render(request, 'app/address.html', {'add': add,  'active': 'btn-info', 'tcart': cart})
+    else:
+        return render(request, 'app/address.html', {'add': add,  'active': 'btn-info'})
 
 
 @login_required
@@ -275,6 +278,24 @@ def covid(request, data=None):
         cart = Cart.objects.filter(user=request.user)
         return render(request, 'app/covid.html', {'covid': covid, 'tcart': cart})
     return render(request, 'app/covid.html', {'covid': covid})
+
+
+def devices(request, data=None):
+    if data == None:
+        devices = Product.objects.filter(category='D')
+    elif data == 'Square' or data == 'Anzara' or data == "Infinity":
+        devices = Product.objects.filter(category="D").filter(brand=data)
+    elif data == "below":
+        devices = Product.objects.filter(
+            category="D").filter(discounted_price__lt=1000)
+    elif data == "above":
+        devices = Product.objects.filter(
+            category="D").filter(discounted_price__gt=900)
+
+    if request.user.is_authenticated:
+        cart = Cart.objects.filter(user=request.user)
+        return render(request, 'app/devices.html', {'devices': devices, 'tcart': cart})
+    return render(request, 'app/devices.html', {'devices': devices})
 
 
 def login(request):
@@ -378,7 +399,8 @@ class PasswordChangeView(View):
         if request.user.is_authenticated:
             cart = Cart.objects.filter(user=request.user)
             return render(request, 'app/passwordchange.html', {'tcart': cart})
-        return (request, 'app/passwordchange.html')
+        else:
+            return render(request, 'app/passwordchange.html')
 
 
 def searchhresult(request):

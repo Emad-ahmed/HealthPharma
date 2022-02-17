@@ -12,6 +12,18 @@
 
 <!-- Button trigger modal -->
 
+<style>
+  .newhi {
+    background: red;
+    width: 5.5rem;
+    height: 5.5rem;
+    position: absolute;
+    border-radius: 20px 0px 100px 0px;
+    color: white;
+    font-size:15px;
+    top:1.7rem
+  }
+</style>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -220,6 +232,9 @@
     {% for m in covid %}
     <a href="{% url 'product-detail' m.id %}" class="btn">
       <div class="item">
+        <div class="newhi">
+          <p class="mt-4 me-3">10% Sale</p>
+        </div>
         <img
           src="{{m.product_image.url}}"
           alt=""
@@ -250,6 +265,9 @@
     {% for m in herbal %}
     <a href="{% url 'product-detail' m.id %}" class="btn">
       <div class="item">
+        <div class="newhi">
+          <p class="mt-4 me-3">10% Sale</p>
+        </div>
         <img
           src="{{m.product_image.url}}"
           alt=""
@@ -279,6 +297,9 @@
     {% for m in babymom %}
     <a href="{% url 'product-detail' m.id %}" class="btn">
       <div class="item">
+        <div class="newhi">
+          <p class="mt-4 me-3">10% Sale</p>
+        </div>
         <img
           src="{{m.product_image.url}}"
           alt=""
@@ -305,6 +326,9 @@
     {% for m in devices %}
     <a href="{% url 'product-detail' m.id %}" class="btn">
       <div class="item">
+        <div class="newhi">
+          <p class="mt-4 me-3">10% Sale</p>
+        </div>
         <img
           src="{{m.product_image.url}}"
           alt=""
@@ -334,6 +358,9 @@
     {% for m in nudrinks %}
     <a href="{% url 'product-detail' m.id %}" class="btn">
       <div class="item">
+        <div class="newhi">
+          <p class="mt-4 me-3">10% Sale</p>
+        </div>
         <img
           src="{{m.product_image.url}}"
           alt=""
@@ -361,6 +388,9 @@
     {% for m in Persoal %}
     <a href="{% url 'product-detail' m.id %}" class="btn">
       <div class="item">
+        <div class="newhi">
+          <p class="mt-4 me-3">10% Sale</p>
+        </div>
         <img
           src="{{m.product_image.url}}"
           alt=""
@@ -388,6 +418,9 @@
     {% for m in otc %}
     <a href="{% url 'product-detail' m.id %}" class="btn">
       <div class="item">
+        <div class="newhi">
+          <p class="mt-4 me-3">10% Sale</p>
+        </div>
         <img
           src="{{m.product_image.url}}"
           alt=""
@@ -415,6 +448,9 @@
     {% for m in pm %}
     <a href="{% url 'product-detail' m.id %}" class="btn">
       <div class="item">
+        <div class="newhi">
+          <p class="mt-4 me-3">10% Sale</p>
+        </div>
         <img
           src="{{m.product_image.url}}"
           alt=""
