@@ -63,11 +63,13 @@ class ProductDetailView(View):
         product = Product.objects.get(pk=pk)
         item_already_cart = False
         if request.user.is_authenticated:
-            cart = Cart.objects.filter(user=request.user)
+
             item_already_cart = Cart.objects.filter(
                 Q(product=product.id) & Q(user=request.user)).exists()
-
-        return render(request, 'app/productdetail.html', {'product': product, 'item_already_cart': item_already_cart, 'tcart': cart, 'tcart': cart, })
+            cart = Cart.objects.filter(user=request.user)
+            return render(request, 'app/productdetail.html', {'product': product, 'item_already_cart': item_already_cart, 'tcart': cart})
+        else:
+            return render(request, 'app/productdetail.html', {'product': product, 'item_already_cart': item_already_cart})
 
 
 @login_required
@@ -387,3 +389,9 @@ def searchhresult(request):
         cart = Cart.objects.filter(user=request.user)
         return render(request, 'app/search.html', {'product': allpro, 'tcart': cart})
     return render(request, 'app/search.html', {'product': allpro})
+
+
+def doctor(request, data=None):
+    if request.user.is_authenticated:
+        cart = Cart.objects.filter(user=request.user)
+    return render(request, 'app/doctor.html', {'tcart': cart})

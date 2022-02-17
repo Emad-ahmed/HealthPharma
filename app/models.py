@@ -100,3 +100,22 @@ class OrderPlaced(models.Model):
 class UploadPrescription(models.Model):
     newuser = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     prescription_image = models.ImageField(upload_to='presimg')
+
+
+class DoctorInfo(models.Model):
+    name = models.CharField(max_length=100)
+    qualification = models.CharField(max_length=200)
+    specialist = models.CharField(max_length=200)
+    chamber = models.CharField(max_length=300)
+    chamber_address = models.CharField(max_length=300)
+    serial_number = models.CharField(max_length=50)
+    visiting_hour = models.CharField(max_length=200)
+    new_patient_fee = models.IntegerField(blank=True)
+    old_patient_fee = models.IntegerField(blank=True)
+    report_checking_fee = models.IntegerField(blank=True)
+    doctor_img = models.ImageField(upload_to='doctorimg', null=True)
+    city = models.CharField(
+        max_length=50, choices=STATE_CHOICES, default="Dhaka")
+
+    def __str__(self):
+        return str(self.id)
