@@ -1,25 +1,27 @@
 {% extends 'app/base.html' %} <br />
 {% load static %} <br />
-{% block title %} {% endblock title %} <br />
+{% block title %}Doctor{% endblock title %} <br />
 {% block main-content %}
 <style>
   body {
-    background: white;
+    background: #100f11;
   }
   .card {
     color: black;
+    border-radius: 40px 20px 40px 20px;
+    background: #ffffff;
   }
 </style>
 <div class="container-fluid">
   <h1 class="text-center text-white mt-4 mb-4">Doctor Information</h1>
   <div class="row">
     {% for doctor in doctor_info %}
-    <div class="col-lg-4">
-      <div class="card" style="width: 25rem; height: 28rem">
+    <div class="col-lg-3">
+      <div class="card" style="width: 16rem; height: 25rem">
         <img src="{{doctor.doctor_img.url}}" class="card-img-top" alt="..." />
         <div class="card-body">
-          <h5 class="card-title">{{doctor.name}}</h5>
-          <p class="card-text">{{doctor.qualification}}</p>
+          <h5 class="card-title fw-bold">{{doctor.name}}</h5>
+          <p class="card-text textp">{{doctor.qualification}}</p>
           <p>{{doctor.chamber_address}}</p>
           <a href="#" class="btn btn-primary">See All Information</a>
         </div>
