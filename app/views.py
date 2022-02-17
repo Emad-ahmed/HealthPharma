@@ -10,8 +10,8 @@ from django.db.models import Q
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from app.forms import UploadPrescriptionForm
-from app.models import Customer, UploadPrescription
+from app.forms import UploadPrescriptionForm, DoctorInfoForm
+from app.models import Customer, UploadPrescription, DoctorInfo
 # def home(request):
 #  return render(request, 'app/home.html')
 
@@ -413,7 +413,8 @@ def searchhresult(request):
     return render(request, 'app/search.html', {'product': allpro})
 
 
-def doctor(request, data=None):
+def doctor(request):
     if request.user.is_authenticated:
         cart = Cart.objects.filter(user=request.user)
-    return render(request, 'app/doctor.html', {'tcart': cart})
+    doctor_info = DoctorInfo.objects.all()
+    return render(request, 'app/doctor.html', {'tcart': cart, 'doctor_info': doctor_info})

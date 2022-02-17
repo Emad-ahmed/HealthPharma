@@ -1,4 +1,28 @@
 {% extends 'app/base.html' %} <br />
 {% load static %} <br />
-{% block title %}Doctor{% endblock title %} <br />
-{% block main-content %} {% endblock main-content %}
+{% block title %} {% endblock title %} <br />
+{% block main-content %}
+<style>
+  .card {
+    color: black;
+  }
+</style>
+<div class="container-fluid">
+  <h1 class="text-center text-white mt-4 mb-4">Doctor Information</h1>
+  <div class="row">
+    {% for doctor in doctor_info %}
+    <div class="col-lg-4">
+      <div class="card" style="width: 25rem; height: 28rem">
+        <img src="{{doctor.doctor_img.url}}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{doctor.name}}</h5>
+          <p class="card-text">{{doctor.qualification}}</p>
+          <p>{{doctor.chamber_address}}</p>
+          <a href="#" class="btn btn-primary">See All Information</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock main-content %}
