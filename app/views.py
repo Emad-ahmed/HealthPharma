@@ -414,7 +414,14 @@ def searchhresult(request):
 
 
 def doctor(request):
+    doctor_info = DoctorInfo.objects.all()
     if request.user.is_authenticated:
         cart = Cart.objects.filter(user=request.user)
-    doctor_info = DoctorInfo.objects.all()
-    return render(request, 'app/doctor.html', {'tcart': cart, 'doctor_info': doctor_info})
+        return render(request, 'app/doctor.html', {'tcart': cart, 'doctor_info': doctor_info})
+    return render(request, 'app/doctor.html', {'doctor_info': doctor_info})
+
+
+def doctor_details(request, id):
+    doctor_info = DoctorInfo.objects.get(id=id)
+
+    return render(request, 'app/doctor_details.html', {'doctorallinfo': doctor_info})

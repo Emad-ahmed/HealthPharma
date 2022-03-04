@@ -29,8 +29,10 @@ urlpatterns = [
     path('covid/', views.covid, name='covid'),
     path('coviddata/<slug:data>', views.covid, name='coviddata'),
     path('mobile/', views.mobile, name='mobile'),
+
     path('mobile/<slug:data>', views.mobile, name='mobiledata'),
     path('laptob/', views.laptob, name='laptob'),
+    path('doctor_details/<int:id>/', views.doctor_details, name='doctor_details'),
     path('laptob/<slug:data>', views.laptob, name='laptobdata'),
     path('checkout/', views.checkout, name='checkout'),
     path('paymentdone/', views.payment_done, name='paymentdone'),
