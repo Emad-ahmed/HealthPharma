@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from app.forms import UploadPrescriptionForm, DoctorInfoForm
 from app.models import Customer, UploadPrescription, DoctorInfo
+import requests
 # def home(request):
 #  return render(request, 'app/home.html')
 
@@ -425,3 +426,20 @@ def doctor_details(request, id):
     doctor_info = DoctorInfo.objects.get(id=id)
 
     return render(request, 'app/doctor_details.html', {'doctorallinfo': doctor_info})
+
+
+def covidinformation(request):
+    data = True
+    result = None
+    globalSummary = None
+    countries = None
+    while(data):
+        try:
+            result = requests.get('https://api.covid19api.com/summary')
+            globalSummary = result.json()['Global']
+            countries = result.json()['Countries']
+            data = False
+        except:
+            data = True
+
+    return render(request, 'app/covidinformation.html', {'globalSummary': globalSummary, "countries": countries})

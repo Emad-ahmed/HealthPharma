@@ -29,7 +29,7 @@ urlpatterns = [
     path('covid/', views.covid, name='covid'),
     path('coviddata/<slug:data>', views.covid, name='coviddata'),
     path('mobile/', views.mobile, name='mobile'),
-
+    path('covidinformation/', views.covidinformation, name='covidinformation'),
     path('mobile/<slug:data>', views.mobile, name='mobiledata'),
     path('laptob/', views.laptob, name='laptob'),
     path('doctor_details/<int:id>/', views.doctor_details, name='doctor_details'),
