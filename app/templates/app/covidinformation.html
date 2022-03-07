@@ -31,6 +31,9 @@
     position: sticky;
     left: 0;
   }
+  #myInput {
+    border: 1px solid tomato;
+  }
 </style>
 
 <div class="container">
@@ -80,7 +83,15 @@
 
   <h4 class="alert alert-light border rounded">Country Wise Summary</h4>
 
-  <table class="table">
+  <input
+    class="form-control mb-3"
+    type="text"
+    name=""
+    id="myInput"
+    placeholder="Country..."
+    onkeyup="searchFun()"
+  />
+  <table class="table" id="myTable">
     <thead>
       <tr>
         <th>Sno.</th>
@@ -103,5 +114,31 @@
     </tbody>
   </table>
 </div>
+
+<script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'app/js/all.min.js' %}"></script>
+<script src="{% static 'app/js/myscript.js' %}"></script>
+
+<script>
+  const searchFun = () => {
+    let filter = document.getElementById("myInput").value.toUpperCase();
+
+    let myTable = document.getElementById("myTable");
+    let tr = myTable.getElementsByTagName("tr");
+
+    for (var i = 0; i < tr.length; i++) {
+      let td = tr[i].getElementsByTagName("td")[1];
+
+      if (td) {
+        let textvalue = td.textContent || td.innerHTML;
+        if (textvalue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  };
+</script>
 
 {% endblock main-content %}
